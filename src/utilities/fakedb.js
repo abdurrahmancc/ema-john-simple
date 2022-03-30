@@ -22,8 +22,8 @@ const addToDb = (id) => {
 const getShoppingId = () => {
   let shoppingCart = {};
   const storedCart = localStorage.getItem("shopping-cart");
-  const storedCarts = localStorage.getItem("shopping-cartfs");
-  console.log("carts", storedCarts);
+  // const storedCarts = localStorage.getItem("shopping-cartfs");
+  // console.log("carts", storedCarts);
   if (storedCart) {
     shoppingCart = JSON.parse(storedCart);
   }

@@ -31,3 +31,9 @@
 .cart-container h1{
     text-align: center;
 }
+.product-contents{
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
