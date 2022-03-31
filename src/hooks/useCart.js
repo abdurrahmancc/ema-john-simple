@@ -3,6 +3,7 @@ import { getShoppingId } from "../utilities/fakedb";
 
 const useCart = (products) => {
   const [cart, setCart] = useState([]);
+  // console.log(" select cartssss", cart);
   useEffect(() => {
     const storeCart = getShoppingId();
     const saveCart = [];

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import useCart from "../../../hooks/useCart";
 import useProducts from "../../../hooks/useProducts";
 import { addToDb, getShoppingId } from "../../fakedb";
 import Cart from "../Cart/Cart";
@@ -7,9 +9,11 @@ import "./Shop.css";
 
 const Shop = () => {
   const [products, setProducts] = useProducts();
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useCart(products);
+  const navigate = useNavigate();
+
   const heandelAddToCart = (selectProduct) => {
-    // console.log("product id", selectProduct);
+    console.log(" select cart", cart);
     let newCart = [];
     const exises = cart.find((product) => product.id === selectProduct.id);
     console.log("pro", exises);
@@ -26,24 +30,19 @@ const Shop = () => {
     addToDb(selectProduct.id);
     // console.log(newCart);
   };
-  useEffect(() => {
+  /* useEffect(() => {
     const storedCart = getShoppingId();
-    // console.log("storedCart", storedCart);
     const saveCart = [];
     for (const id in storedCart) {
-      // console.log(ids);
       const addedProduct = products.find((product) => product.id === id);
       if (addedProduct) {
         const quantity = storedCart[id];
-        console.log("quantity", quantity);
-
         addedProduct.quantity = quantity;
         saveCart.push(addedProduct);
-        // console.log(addedProduct);
-        setCart(saveCart);
       }
     }
-  }, [products]);
+    setCart(saveCart);
+  }, [products]); */
 
   return (
     <div className="shop-container">
@@ -59,7 +58,12 @@ const Shop = () => {
         </div>
       </div>
       <div className="cart-container">
-        <Cart cart={cart}></Cart>
+        <Cart cart={cart}>
+          {/* <Link to="/orders"> */}
+          <button onClick={() => navigate("/orders")}>Review Orders</button>
+          {/* <button onClick={() => navigate("/orders/" + cart[0].id)}>Review Orders</button> */}
+          {/* </Link> */}
+        </Cart>
       </div>
     </div>
   );

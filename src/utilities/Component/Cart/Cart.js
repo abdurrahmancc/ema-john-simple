@@ -1,8 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Cart.css";
 
-const Cart = ({ cart }) => {
-  // console.log(cart);
+const Cart = (props) => {
+  const { cart, children } = props;
+  console.log(props);
   let total = 0;
   let sopping = 0;
   let quantity = 0;
@@ -21,6 +23,7 @@ const Cart = ({ cart }) => {
       <p>Total Shipping Charge: ${sopping}</p>
       <p>Tax: ${tax.toFixed(2)}</p>
       <h5>Grand Total: ${sum}</h5>
+      {children}
     </div>
   );
 };

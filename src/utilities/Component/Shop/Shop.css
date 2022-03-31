@@ -34,6 +34,9 @@
 .product-contents{
     margin-right: auto;
     margin-left: auto;
-    margin-top: auto;
-    margin-bottom: auto;
+    /* margin-top: auto;
+    margin-bottom: auto; */
+}
+.colors{
+    color: blue;
 }
